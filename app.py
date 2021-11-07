@@ -8,7 +8,7 @@ from prometheus_flask_exporter import PrometheusMetrics
 
 
 app = Flask(__name__)
-metrics = PrometheusMetrics(app)
+metrics = PrometheusMetrics(app, export_defaults=False)
 
 # static information as metric
 metrics.info('app_info', 'Application info', version='0.1.0')
@@ -38,12 +38,14 @@ def first_route():
     return 'one - ok'
 
 
-@app.route('/fibonacci', methods=['GET'])
-def the_second():
-    print(f'two')
-
-
-    return 'two - ok'
+@app.route('/fibonacci', methods=['POST'])
+@common_counter
+def fibonacci_route():
+    print(f'fibonacci - IN')
+    num = request.get_json()['number']
+    result = fibonacci(num)
+    print(f'fibonacci - OUT: {result}')
+    return f'RESULT: {result}'
 
 
 if __name__ == '__main__':
