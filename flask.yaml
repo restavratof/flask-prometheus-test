@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: flask
-        image: restavratof/flask-image:fib
+        image: restavratof/flask-image:gunicorn
         ports:
           - containerPort: 80
 ---

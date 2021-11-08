@@ -1,11 +1,21 @@
-FROM python:3.9.7-slim
+FROM python:3.9-alpine
+
+RUN apk update && apk add gcc g++ python3-dev
 
 ENV PYTHONUNBUFFERED=1
+RUN adduser -D flask1
 
-ADD requirements.txt /tmp/requirements.txt
+WORKDIR /home/flask1
 
-RUN pip install -r /tmp/requirements.txt
+COPY requirements.txt requirements.txt
+RUN python -m venv venv \
+    && venv/bin/pip install --no-cache-dir -r requirements.txt
 
-ADD app.py /var/server/app.py
+COPY app.py gunicorn.sh ./
+RUN chmod +x gunicorn.sh \
+    && chown -R flask1:flask1 ./
 
-CMD python /var/server/app.py
+USER flask1
+
+EXPOSE 5000
+ENTRYPOINT ["./gunicorn.sh"]
