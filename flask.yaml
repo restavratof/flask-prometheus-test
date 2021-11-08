@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: flask-deployment
-  namespace: prometheus
+  namespace: dfash
 spec:
   selector:
     matchLabels:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: flask
-        image: restavratof/flask-image:latest
+        image: restavratof/flask-image:fib
         ports:
           - containerPort: 80
 ---
@@ -23,7 +23,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: flask-service
-  namespace: prometheus
+  namespace: dfash
 spec:
   ports:
   - port: 80

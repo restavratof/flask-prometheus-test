@@ -30,12 +30,11 @@ def fibonacci(n):
         return fibonacci(n - 1) + fibonacci(n - 2)
 
 
-@app.route('/actuator/one')
+@app.route('/health')
 @metrics.do_not_track()
-def first_route():
-    print(f'one')
-    time.sleep(random.random() * 0.4)
-    return 'one - ok'
+def health():
+    print(f'health - START')
+    return 'OK'
 
 
 @app.route('/fibonacci', methods=['POST'])
