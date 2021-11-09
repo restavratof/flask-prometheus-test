@@ -1,0 +1,18 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: df-app
+  namespace: dfash
+  labels:
+    team: df1
+spec:
+  endpoints:
+  - port: http
+    interval: 15s
+  namespaceSelector:
+    matchNames:
+    - dfash
+  selector:
+    matchLabels:
+      app: df-app

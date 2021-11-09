@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: df-app
+  namespace: dfash
+spec:
+  selector:
+    matchLabels:
+      app: df-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: df-app
+    spec:
+      containers:
+      - name: df-app
+        image: restavratof/flask-image:gunicorn
+        ports:
+          - name: http
+            containerPort: 5000
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 200m
+            memory: 128Mi
+
