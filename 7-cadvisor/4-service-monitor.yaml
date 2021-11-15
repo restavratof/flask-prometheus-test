@@ -2,17 +2,17 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: df-app
-  namespace: dfash
+  name: cadvisor
+  namespace: monitoring
   labels:
-    team: df1
+    team: devops
 spec:
   endpoints:
-  - port: http
+  - port: http-metrics
     interval: 15s
   namespaceSelector:
     matchNames:
-    - dfash
+    - monitoring
   selector:
     matchLabels:
-      app: df-app
+      app: cadvisor

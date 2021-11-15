@@ -1,24 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: df-app
-  namespace: dfash
+  name: express
+  namespace: demo
 spec:
   selector:
     matchLabels:
-      app: df-app
-  replicas: 3
+      app: express
   template:
     metadata:
       labels:
-        app: df-app
+        app: express
     spec:
       containers:
-      - name: df-app
-        image: restavratof/flask-image:gunicorn
+      - image: restavratof/flask-image:gunicorn
+        name: express
         ports:
-          - name: http
-            containerPort: 5000
+        - name: http
+          containerPort: 5000
         resources:
           limits:
             cpu: 500m
@@ -26,4 +25,3 @@ spec:
           requests:
             cpu: 200m
             memory: 128Mi
-

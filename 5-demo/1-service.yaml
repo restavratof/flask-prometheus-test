@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: df-app
-  namespace: dfash
+  name: express
+  namespace: demo
   labels:
-    app: df-app
+    app: express
 spec:
   type: ClusterIP
   ports:
@@ -14,4 +14,4 @@ spec:
     protocol: TCP
     targetPort: http
   selector:
-    app: df-app
+    app: express
