@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: express
-  namespace: demo
+  name: df1
+  namespace: df-demo
 spec:
   selector:
     matchLabels:
-      app: express
+      app: df1
   template:
     metadata:
       labels:
-        app: express
+        app: df1
     spec:
       containers:
       - image: restavratof/flask-image:gunicorn
-        name: express
+        name: df1
         ports:
         - name: http
           containerPort: 5000

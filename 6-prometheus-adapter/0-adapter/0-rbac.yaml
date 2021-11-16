@@ -5,7 +5,7 @@ metadata:
   labels:
     app: prometheus-adapter
   name: custom-metrics-prometheus-adapter
-  namespace: monitoring
+  namespace: dfash
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -20,7 +20,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: custom-metrics-prometheus-adapter
-  namespace: monitoring
+  namespace: dfash
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -35,7 +35,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: custom-metrics-prometheus-adapter
-  namespace: monitoring
+  namespace: dfash
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -70,4 +70,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: custom-metrics-prometheus-adapter
-  namespace: monitoring
+  namespace: dfash

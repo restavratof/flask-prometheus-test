@@ -24,4 +24,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: custom-metrics-prometheus-adapter
-  namespace: monitoring
+  namespace: dfash

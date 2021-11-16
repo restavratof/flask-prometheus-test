@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: prometheus-operator
     app.kubernetes.io/version: 0.48.1
   name: prometheus-operator
-  namespace: monitoring
+  namespace: dfash
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -104,4 +104,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: prometheus-operator
-    namespace: monitoring
+    namespace: dfash
