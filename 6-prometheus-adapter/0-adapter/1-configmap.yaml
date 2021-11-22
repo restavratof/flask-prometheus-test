@@ -19,7 +19,7 @@ data:
       name:
         matches: "^(.*)_load"
         as: "${1}_threads"
-      metricsQuery: 'sum(rate(<<.Series>>{<<.LabelMatchers>>}[2m])) by (<<.GroupBy>>)'
+      metricsQuery: 'sum(app_load{<<.LabelMatchers>>}) by (<<.GroupBy>>)'
 #    resourceRules:
 #      cpu:
 #        containerQuery: sum(rate(container_cpu_usage_seconds_total{<<.LabelMatchers>>, container_label_io_kubernetes_container_name!=""}[3m])) by (<<.GroupBy>>)
